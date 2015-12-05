@@ -31,9 +31,9 @@ console(){
         printf "\neMON>>> "
         if [[ $1 != 1 ]]
         then
-            read -n 1 stuff
+            read -nr 1 stuff
         else        
-            read stuff
+            read -r stuff
         fi
         
         if ! [[ $stuff =~ $auth ]]
@@ -112,7 +112,7 @@ modes(){
         do
             v_name=$( echo "$line" | cut -d " " -f 1 )
 
-            if [[ $v_name == $position ]]
+            if [[ $v_name == "$position" ]]
             then
                 task=0
             fi
@@ -124,7 +124,7 @@ modes(){
                 printf "%s.) %s \n" "$counte" "$line"
             fi
 
-            if [[ $v_name == $monitor ]]
+            if [[ $v_name == "$monitor" ]]
             then    
                 task=1
             fi
@@ -142,7 +142,7 @@ options(){
     clear
     monitor=${listing[stuff]}
     printf "\nShowing the current configuration for %s:\n\n" "$monitor"
-    xrandr | grep $monitor
+    xrandr | grep "$monitor"
     
     printf "\nOptions:"
     printf "
@@ -166,53 +166,53 @@ options(){
 
     case $stuff in
 
-        1) xrandr --output $monitor --auto;;
+        1) xrandr --output "$monitor" --auto;;
         
-        2) xrandr --output $monitor --preferred;;
+        2) xrandr --output "$monitor" --preferred;;
 
-        3) xrandr --output $monitor --off;;
+        3) xrandr --output "$monitor" --off;;
 
         4) clear
             modes
             printf "\nType the number of the mode you want\n"
             printf "change to and hit ENTER:\n"
             console 1
-            xrandr --output $monitor --mode ${modelist[$stuff]} 
+            xrandr --output "$monitor" --mode "${modelist[$stuff]}" 
             #printf " xrandr --output $monitor --mode ${modelist[$stuff]} "
             #printf "\nMode changed. Hit ENTER do Continue.\n"
             #read
             ;;
 
-        5) printf "Choose the number of the output you want $monitor above:\n"
+        5) printf "Choose the number of the output you want %s above:\n" "$monitor"
             relation_to
             console
-            xrandr --output $monitor --above ${listing[stuff]} ;;
+            xrandr --output "$monitor" --above "${listing[stuff]}" ;;
 
-        6) printf "Choose the number of the output you want $monitor below:\n"
+        6) printf "Choose the number of the output you want %s below:\n" "$monitor"
             relation_to
             console
-            xrandr --output $monitor --below ${listing[stuff]} ;;
+            xrandr --output "$monitor" --below "${listing[stuff]}" ;;
 
-        7) printf "Choose the number of the output you want $monitor left of:\n"
+        7) printf "Choose the number of the output you want %s left of:\n" "$monitor"
             relation_to
             console
-            xrandr --output $monitor --left-of ${listing[stuff]} ;;
+            xrandr --output "$monitor" --left-of "${listing[stuff]}" ;;
 
-        8) printf "Choose the number of the output you want $monitor right of:\n"
+        8) printf "Choose the number of the output you want %s right of:\n" "$monitor"
             relation_to
             console
-            xrandr --output $monitor --right-of ${listing[stuff]} ;;
+            xrandr --output "$monitor" --right-of "${listing[stuff]}" ;;
 
-        9) xrandr --output $monitor --rotate normal;;
+        9) xrandr --output "$monitor" --rotate normal;;
 
-        10) xrandr --output $monitor --rotate left;;
+        10) xrandr --output "$monitor" --rotate left;;
 
-        11) xrandr --output $monitor --rotate right;;
+        11) xrandr --output "$monitor" --rotate right;;
 
-        12) xrandr --output $monitor --rotate inverted;;
+        12) xrandr --output "$monitor" --rotate inverted;;
 
         *) echo "This is not an option, please hit ENTER."
-            read;;
+            read -r;;
     esac
 
    
@@ -236,7 +236,7 @@ mainmenu(){
 
         position=${listing[$((stuff+1))]}
 
-        if [ $stuff -eq "0" ]
+        if [ "$stuff" -eq "0" ]
         then
             stuff=100
         fi
@@ -247,7 +247,7 @@ mainmenu(){
         else
             printf "\nYou did not entered a valid number.\n"
             printf "\nPress any key to try again.\n"
-            read -s -n 1
+            read -r -s -n 1
         fi
     done
 
