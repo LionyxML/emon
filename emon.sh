@@ -31,7 +31,7 @@ console(){
         printf "\neMON>>> "
         if [[ $1 != 1 ]]
         then
-            read -nr 1 stuff
+            read -r -n 1 stuff
         else        
             read -r stuff
         fi
