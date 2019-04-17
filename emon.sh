@@ -2,7 +2,10 @@
 
 :'
 Author : RMJ (rahul.juliato@gmail.com)
-Date   : 05.12.2015
+
+Date   : v0.1 - 05.12.2015
+         v0.2 - 17.04.2019 (fixed some minor bugs)
+
 Program: eMON v0.1
 
 Description: A tool for "fast and lazy" changes 
@@ -16,7 +19,7 @@ https://www.gnu.org/licenses/gpl-2.0.html
 
 
 #Variables
-version=0.1
+version=0.2
 counte=0
 stuff=0
 
@@ -31,7 +34,7 @@ console(){
         printf "\neMON>>> "
         if [[ $1 != 1 ]]
         then
-            read -r -n 1 stuff
+            read -rn 1 stuff
         else        
             read -r stuff
         fi

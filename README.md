@@ -1,7 +1,7 @@
 eMON
 ----
 
-This is a wrapper for xrandr (Xorg) in *nix world and it does some of basic functions of setting up monitors.
+This is a interactive cli bash script for xrandr (Xorg) in *nix world and it does some of basic functions of setting up screens on monitors.
 
 You can:
 - Position your screen LEFT, RIGHT, ABOVE and BELOW, other screen.
@@ -13,5 +13,9 @@ You can:
 
 Execute emon.sh with bash.
 
-Software is interactive.
+Screenshots
+----------
+![images/1.png]
+![images/2.png]
+
 
