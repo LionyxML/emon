@@ -15,7 +15,7 @@ Execute emon.sh with bash.
 
 Screenshots
 ----------
-![images/1.png]
-![images/2.png]
+![Main Screen](images/1.png)
+![Options](images/2.png)
 
 
